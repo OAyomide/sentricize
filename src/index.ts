@@ -17,6 +17,15 @@ app.get("/api/issues", async (req: Request, res: Response) => {
     return res.status(200).json({ data: allProjects });
 });
 
+app.get("/api/orgs", async (req: Request, res: Response) => {
+    let organization: string = await apiService.getOrgName()
+    return res.status(200).json({
+        data: {
+            org_name: organization
+        }
+    })
+})
+
 app.listen(port, () => {
     console.log(`APP UP AND RUNNING ON PORT ${port}`);
 });
